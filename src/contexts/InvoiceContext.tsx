@@ -9,24 +9,9 @@ import {
 } from "react";
 import { Invoice, InvoiceStatus, FilterStatus } from "../types";
 import { seedInvoices } from "../data/seedData";
+import type { InvoiceState, Action } from "../types";
 
 const STORAGE_KEY = "invoiceApp_invoices";
-
-interface InvoiceState {
-  invoices: Invoice[];
-  filterStatus: FilterStatus[];
-  isLoading: boolean;
-}
-
-type Action =
-  | { type: "SET_INVOICES"; payload: Invoice[] }
-  | { type: "ADD_INVOICE"; payload: Invoice }
-  | { type: "UPDATE_INVOICE"; payload: Invoice }
-  | { type: "DELETE_INVOICE"; payload: string }
-  | { type: "MARK_PAID"; payload: string }
-  | { type: "SEND_INVOICE"; payload: string }
-  | { type: "SET_FILTER"; payload: FilterStatus[] }
-  | { type: "SET_LOADING"; payload: boolean };
 
 function reducer(state: InvoiceState, action: Action): InvoiceState {
   switch (action.type) {

@@ -1,5 +1,25 @@
 export type InvoiceStatus = "draft" | "pending" | "paid";
 
+export interface InvoiceState {
+  invoices: Invoice[];
+  filterStatus: FilterStatus[];
+  isLoading: boolean;
+}
+
+export interface StatusBadgeProps {
+  status: InvoiceStatus;
+}
+
+export type Action =
+  | { type: "SET_INVOICES"; payload: Invoice[] }
+  | { type: "ADD_INVOICE"; payload: Invoice }
+  | { type: "UPDATE_INVOICE"; payload: Invoice }
+  | { type: "DELETE_INVOICE"; payload: string }
+  | { type: "MARK_PAID"; payload: string }
+  | { type: "SEND_INVOICE"; payload: string }
+  | { type: "SET_FILTER"; payload: FilterStatus[] }
+  | { type: "SET_LOADING"; payload: boolean };
+
 export interface Address {
   street: string;
   city: string;
@@ -13,6 +33,13 @@ export interface InvoiceItem {
   quantity: number;
   price: number;
   total: number;
+}
+
+export type Theme = "light" | "dark";
+export interface ThemeContextType {
+  theme: Theme;
+  toggleTheme: () => void;
+  isDark: boolean;
 }
 
 export interface Invoice {

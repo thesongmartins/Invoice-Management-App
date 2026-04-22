@@ -1,9 +1,5 @@
-import { InvoiceStatus } from "../types";
+import { InvoiceStatus, StatusBadgeProps } from "../types";
 import { getStatusLabel } from "../utils";
-
-interface StatusBadgeProps {
-  status: InvoiceStatus;
-}
 
 const statusStyles: Record<InvoiceStatus, string> = {
   draft: "bg-[#F4F4F5] text-[#373B53] dark:bg-[#292C44] dark:text-[#DFE3FA]",

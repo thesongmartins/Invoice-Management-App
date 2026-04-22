@@ -48,21 +48,6 @@ const FormField = forwardRef<
         )}
       </div>
 
-      {/* {"as" in props && props.as === "select" ? (
-        <select
-          id={id}
-          className={inputClass(hasError)}
-          {...(props as SelectHTMLAttributes<HTMLSelectElement>)}
-        >
-          {(props as SelectProps).children}
-        </select>
-      ) : (
-        <input
-          id={id}
-          className={inputClass(hasError)}
-          {...(props as InputHTMLAttributes<HTMLInputElement>)}
-        />
-      )} */}
       <div className="relative">
         {"as" in props && props.as === "select" ? (
           <select
