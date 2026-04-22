@@ -88,7 +88,7 @@ export default function InvoiceDetail() {
             {invoice.status !== "paid" && (
               <button
                 onClick={() => setShowEdit(true)}
-                className="px-6 py-4 rounded-btn font-bold text-[15px] bg-[#F9FAFE] dark:bg-navy-light text-blue-soft dark:text-blue-gray hover:bg-[#DFE3FA] dark:hover:bg-navy transition-colors"
+                className="px-6 py-4 rounded-btn font-bold text-[15px] bg-[#F9FAFE] dark:bg-navy-light text-blue-soft dark:text-blue-gray hover:bg-[#DFE3FA] dark:hover:bg-[#FFFFFF] hover:dark:text-[#7E88C3] transition-colors"
               >
                 Edit
               </button>
