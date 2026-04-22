@@ -55,8 +55,8 @@ export default function InvoiceList() {
               onClick={() => setShowForm(true)}
               className="
                 flex items-center gap-4
-                bg-purple hover:bg-purple-light
-                text-white font-bold text-xs
+                bg-[#7C5DFA] hover:bg-[#9277FF]
+                text-white font-bold text-[13px]
                 rounded-btn pl-2 pr-4 py-2
                 transition-colors
               "

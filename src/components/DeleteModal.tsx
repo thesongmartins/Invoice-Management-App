@@ -1,11 +1,6 @@
 import { useRef, useEffect } from "react";
 import { useFocusTrap } from "../hooks/useFocusTrap";
-
-interface DeleteModalProps {
-  invoiceId: string;
-  onConfirm: () => void;
-  onCancel: () => void;
-}
+import type { DeleteModalProps } from "../types";
 
 export default function DeleteModal({
   invoiceId,

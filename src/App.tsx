@@ -13,7 +13,7 @@ export default function App() {
         <main
           className="
             max-w-[780px] mx-auto
-            px-6 md:px-12
+            px-4 md:px-6
             py-16 md:py-[72px]
             pb-24 md:pb-16
           "

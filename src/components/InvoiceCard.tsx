@@ -1,10 +1,10 @@
-import { Link } from 'react-router-dom'
-import { Invoice } from '../types'
-import { formatDate, formatCurrency } from '../utils'
-import StatusBadge from './StatusBadge'
+import { Link } from "react-router-dom";
+import { Invoice } from "../types";
+import { formatDate, formatCurrency } from "../utils";
+import StatusBadge from "./StatusBadge";
 
 interface InvoiceCardProps {
-  invoice: Invoice
+  invoice: Invoice;
 }
 
 export default function InvoiceCard({ invoice }: InvoiceCardProps) {
@@ -20,23 +20,23 @@ export default function InvoiceCard({ invoice }: InvoiceCardProps) {
       aria-label={`View invoice ${invoice.id}, ${invoice.clientName}, ${formatCurrency(invoice.total)}, due ${formatDate(invoice.paymentDue)}, status ${invoice.status}`}
     >
       {/* ID */}
-      <span className="font-bold text-xs w-[80px] shrink-0 text-navy dark:text-white">
+      <span className="font-bold text-[15px] w-[80px] shrink-0 text-[#7C5DFA] dark:text-white">
         <span className="text-blue-soft">#</span>
         {invoice.id}
       </span>
 
       {/* Due date */}
-      <span className="text-blue-soft dark:text-blue-gray text-xs flex-1">
+      <span className="text-blue-soft dark:text-blue-gray text-[13px] font-semibold flex-1">
         Due {formatDate(invoice.paymentDue)}
       </span>
 
       {/* Client name */}
-      <span className="text-blue-soft dark:text-blue-gray text-xs flex-1 text-center hidden sm:block">
+      <span className="text-blue-soft dark:text-blue-gray text-[13px] font-semibold flex-1 text-center hidden sm:block">
         {invoice.clientName}
       </span>
 
       {/* Amount */}
-      <span className="font-bold text-sm md:text-base flex-1 text-right mr-8 md:mr-10 text-navy dark:text-white">
+      <span className="font-bold text-[15px] flex-1 text-right mr-8 md:mr-10 text-navy dark:text-white">
         {formatCurrency(invoice.total)}
       </span>
 
@@ -50,5 +50,5 @@ export default function InvoiceCard({ invoice }: InvoiceCardProps) {
         </svg>
       </span>
     </Link>
-  )
+  );
 }

@@ -1,16 +1,10 @@
 import { useRef, useEffect, useState } from "react";
-import { FilterStatus, InvoiceStatus } from "../types";
-
-interface FilterDropdownProps {
-  selected: FilterStatus[];
-  onChange: (statuses: FilterStatus[]) => void;
-}
-
-const OPTIONS: { value: InvoiceStatus; label: string }[] = [
-  { value: "draft", label: "Draft" },
-  { value: "pending", label: "Pending" },
-  { value: "paid", label: "Paid" },
-];
+import type {
+  FilterStatus,
+  InvoiceStatus,
+  FilterDropdownProps,
+} from "../types";
+import { OPTIONS } from "../utils";
 
 function FilterDropdown({ selected, onChange }: FilterDropdownProps) {
   const [open, setOpen] = useState(false);
