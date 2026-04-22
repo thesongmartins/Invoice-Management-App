@@ -275,25 +275,25 @@ export default function InvoiceDetail() {
       </div>
 
       {/* Mobile action bar */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-navy-medium px-6 py-5 flex items-center justify-end gap-2 shadow-[0_-4px_12px_rgba(0,0,0,0.1)] z-50">
+      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-navy-medium px-6 py-5 flex items-center justify-center gap-4 shadow-[0_-4px_12px_rgba(0,0,0,0.1)] z-50">
         {invoice.status !== "paid" && (
           <button
             onClick={() => setShowEdit(true)}
-            className="px-5 py-4 rounded-btn font-bold text-xs bg-[#F9FAFE] dark:bg-navy-light text-blue-soft dark:text-blue-gray hover:bg-[#DFE3FA] dark:hover:bg-navy transition-colors"
+            className="px-10 py-4 gap-8 rounded-btn font-bold text-[15px] bg-[#F9FAFE] dark:bg-navy-light text-blue-soft dark:text-blue-gray hover:bg-[#DFE3FA] dark:hover:bg-[#FFFFFF] dark:hover:text-[#9277FF] transition-colors"
           >
             Edit
           </button>
         )}
         <button
           onClick={() => setShowDelete(true)}
-          className="px-5 py-4 rounded-btn font-bold text-[15px] bg-[#EC5757] hover:bg-[#FF9797] text-white transition-colors"
+          className="px-10 py-4 rounded-btn font-bold text-[15px] bg-[#EC5757] hover:bg-[#FF9797] text-white transition-colors"
         >
           Delete
         </button>
         {invoice.status === "pending" && (
           <button
             onClick={handleMarkPaid}
-            className="px-5 py-4 rounded-btn font-bold text-[15px] bg-purple hover:bg-[#9277FF] text-white transition-colors"
+            className="px-8 py-4 rounded-btn font-bold text-[15px] bg-purple hover:bg-[#9277FF] text-white transition-colors"
           >
             Mark as Paid
           </button>

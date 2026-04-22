@@ -407,14 +407,20 @@ export default function InvoiceForm({
                         ? "border-danger"
                         : "border-blue-gray dark:border-navy-light hover:border-purple focus:border-purple"
                     }`}
-                    value={item.quantity}
-                    onChange={(e) =>
+                    value={item.quantity === 0 ? "" : item.quantity}
+                    onChange={(e) => {
+                      const raw = e.target.value;
                       updateItem(
                         item.id,
                         "quantity",
-                        Math.max(1, Number(e.target.value)),
-                      )
-                    }
+                        raw === "" ? 0 : Math.max(1, Number(raw)),
+                      );
+                    }}
+                    onBlur={(e) => {
+                      if (!e.target.value || Number(e.target.value) < 1) {
+                        updateItem(item.id, "quantity", 1);
+                      }
+                    }}
                   />
                 </div>
 
@@ -440,10 +446,20 @@ export default function InvoiceForm({
                         ? "border-danger"
                         : "border-blue-gray dark:border-navy-light hover:border-purple focus:border-purple"
                     }`}
-                    value={item.price}
-                    onChange={(e) =>
-                      updateItem(item.id, "price", Number(e.target.value))
-                    }
+                    value={item.price === 0 ? "" : item.price}
+                    onChange={(e) => {
+                      const raw = e.target.value;
+                      updateItem(
+                        item.id,
+                        "price",
+                        raw === "" ? 0 : Math.max(0, Number(raw)),
+                      );
+                    }}
+                    onBlur={(e) => {
+                      if (!e.target.value) {
+                        updateItem(item.id, "price", 0);
+                      }
+                    }}
                   />
                 </div>
 
