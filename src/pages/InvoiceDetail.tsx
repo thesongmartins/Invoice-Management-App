@@ -226,7 +226,7 @@ export default function InvoiceDetail() {
               {invoice.items.map((item, idx) => (
                 <div
                   key={item.id}
-                  className={`grid grid-cols-[2fr_1fr_1fr_1fr] px-6 md:px-8 py-4 items-center ${
+                  className={`grid grid-cols-[2fr_1fr_1fr_1fr] px-6 md:px-8 py-4 gap-2 items-center ${
                     idx < invoice.items.length - 1
                       ? "border-b border-[#DFE3FA] dark:border-navy-medium"
                       : ""
