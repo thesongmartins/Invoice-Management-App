@@ -12,14 +12,12 @@ import { seedInvoices } from "../data/seedData";
 
 const STORAGE_KEY = "invoiceApp_invoices";
 
-// State
 interface InvoiceState {
   invoices: Invoice[];
   filterStatus: FilterStatus[];
   isLoading: boolean;
 }
 
-// Actions
 type Action =
   | { type: "SET_INVOICES"; payload: Invoice[] }
   | { type: "ADD_INVOICE"; payload: Invoice }
@@ -80,7 +78,7 @@ function loadFromStorage(): Invoice[] {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (raw) return JSON.parse(raw) as Invoice[];
   } catch {
-    // fallback
+    console.error("Failed to load invoices from storage");
   }
   return [];
 }
@@ -89,7 +87,6 @@ function saveToStorage(invoices: Invoice[]) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(invoices));
 }
 
-// Context
 interface InvoiceContextType {
   invoices: Invoice[];
   filteredInvoices: Invoice[];
@@ -115,21 +112,20 @@ export function InvoiceProvider({ children }: { children: ReactNode }) {
 
   const isHydrated = useRef(false);
 
-  // Load on mount
   useEffect(() => {
     let stored = loadFromStorage();
     if (stored.length === 0) {
       stored = seedInvoices;
-      saveToStorage(stored);
     }
+    saveToStorage(stored);
     dispatch({ type: "SET_INVOICES", payload: stored });
     dispatch({ type: "SET_LOADING", payload: false });
     isHydrated.current = true;
   }, []);
 
-  // Persist on change
   useEffect(() => {
     if (!isHydrated.current) return;
+    if (state.invoices.length === 0) return;
     saveToStorage(state.invoices);
   }, [state.invoices]);
 
