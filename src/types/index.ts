@@ -9,6 +9,25 @@ export interface InvoiceState {
 export interface StatusBadgeProps {
   status: InvoiceStatus;
 }
+export interface FormErrors {
+  senderStreet?: string;
+  senderCity?: string;
+  senderPostCode?: string;
+  senderCountry?: string;
+  clientName?: string;
+  clientEmail?: string;
+  clientStreet?: string;
+  clientCity?: string;
+  clientPostCode?: string;
+  clientCountry?: string;
+  createdAt?: string;
+  description?: string;
+  items?: string;
+  itemErrors?: Record<
+    string,
+    { name?: string; quantity?: string; price?: string }
+  >;
+}
 
 export type Action =
   | { type: "SET_INVOICES"; payload: Invoice[] }
