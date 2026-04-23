@@ -402,7 +402,7 @@ export default function InvoiceForm({
                     id={`itemQty_${item.id}`}
                     type="number"
                     min={1}
-                    className={`w-full bg-white dark:bg-navy-light border rounded px-3 py-3.5 font-bold text-[13px] text-navy dark:text-white outline-none transition-colors ${
+                    className={`w-[80px] bg-white dark:bg-navy-light border rounded px-3 py-3.5 font-bold text-[13px] text-navy dark:text-white outline-none transition-colors ${
                       itemErr?.quantity
                         ? "border-danger"
                         : "border-blue-gray dark:border-navy-light hover:border-purple focus:border-purple"
@@ -441,7 +441,7 @@ export default function InvoiceForm({
                     type="number"
                     min={0}
                     step={0.01}
-                    className={`w-full bg-white dark:bg-navy-light border rounded px-4 py-3.5 font-bold text-[13px] text-navy dark:text-white outline-none transition-colors ${
+                    className={`w-[160px] bg-white dark:bg-navy-light border rounded px-4 py-3.5 font-bold text-[13px] text-navy dark:text-white outline-none transition-colors ${
                       itemErr?.price
                         ? "border-danger"
                         : "border-blue-gray dark:border-navy-light hover:border-purple focus:border-purple"
@@ -464,11 +464,11 @@ export default function InvoiceForm({
                 </div>
 
                 {/* Total + Delete */}
-                <div className="flex flex-col gap-2.5">
+                <div className="flex flex-col items-start gap-6">
                   <span className="text-[13px] font-bold text-blue-soft dark:text-blue-muted">
                     Total
                   </span>
-                  <div className="flex items-center gap-6">
+                  <div className="flex items-center mb-3 gap-2">
                     <span className="font-bold text-[13px] text-blue-muted min-w-[60px]">
                       {formatCurrency(total)}
                     </span>
