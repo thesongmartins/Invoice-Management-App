@@ -1,4 +1,5 @@
 import { useState, useCallback } from "react";
+import { toast } from "react-toastify";
 import { InvoiceFormData, InvoiceItemFormData, FormErrors } from "../types";
 import { validateEmail } from "../utils";
 
@@ -57,11 +58,23 @@ export function useFormValidation() {
 
       setErrors(newErrors);
 
-      const firstErrorKey = Object.keys(newErrors)[0];
-      const firstErrorId = getFirstErrorId(newErrors, firstErrorKey, formData);
-      return Object.keys(newErrors).length === 0
-        ? true
-        : (scrollToError(firstErrorId), false);
+      const hasErrors = Object.keys(newErrors).length > 0;
+
+      if (hasErrors) {
+        const firstErrorKey = Object.keys(newErrors)[0];
+        const firstErrorId = getFirstErrorId(
+          newErrors,
+          firstErrorKey,
+          formData,
+        );
+        scrollToError(firstErrorId);
+        toast.error("Please fix all errors before submitting", {
+          toastId: "form-validation-error", // prevents duplicate toasts on rapid clicks
+        });
+        return false;
+      }
+
+      return true;
     },
     [],
   );

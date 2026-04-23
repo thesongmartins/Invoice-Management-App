@@ -5,6 +5,7 @@ import FilterDropdown from "../components/FilterDropdown";
 import InvoiceForm from "../components/InvoiceForm";
 import EmptyState from "../components/EmptyState";
 import { Invoice, FilterStatus } from "../types";
+import { toast } from "react-toastify";
 
 export default function InvoiceList() {
   const {
@@ -19,6 +20,11 @@ export default function InvoiceList() {
 
   const handleSave = (invoice: Invoice) => {
     addInvoice(invoice);
+    if (invoice.status == "paid" || "pending" || "draft") {
+      toast.success(`Invoice ${invoice.id} has been successfully published.`);
+    } else {
+      toast.error(`Invoice ${invoice.id} failed to publish.`);
+    }
   };
 
   const count = filteredInvoices.length;

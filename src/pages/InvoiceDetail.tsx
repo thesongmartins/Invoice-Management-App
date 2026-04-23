@@ -6,6 +6,7 @@ import DeleteModal from "../components/DeleteModal";
 import InvoiceForm from "../components/InvoiceForm";
 import { formatDate, formatCurrency } from "../utils";
 import { Invoice } from "../types";
+import { toast } from "react-toastify";
 
 export default function InvoiceDetail() {
   const { id } = useParams<{ id: string }>();
@@ -36,16 +37,34 @@ export default function InvoiceDetail() {
 
   const handleDelete = () => {
     deleteInvoice(invoice.id);
+    toast.success(`Invoice ${invoice.id} has been successfully deleted.`);
     navigate("/");
   };
 
   const handleEdit = (updated: Invoice) => {
     updateInvoice(updated);
     setShowEdit(false);
+    toast.success(`Invoice ${invoice.id} has been successfully updated.`);
   };
 
-  const handleMarkPaid = () => markPaid(invoice.id);
-  const handleSend = () => sendInvoice(invoice.id);
+  const handleMarkPaid = () => {
+    if (invoice.status == "pending") {
+      markPaid(invoice.id);
+      toast.success(
+        `Invoice ${invoice.id} has been successfully marked as paid.`,
+      );
+    } else {
+      toast.error(`Invoice ${invoice.id} failed to mark as paid.`);
+    }
+  };
+  const handleSend = () => {
+    if (invoice.status == "draft") {
+      sendInvoice(invoice.id);
+      toast.success(`Invoice ${invoice.id} has been successfully sent.`);
+    } else {
+      toast.error(`Invoice ${invoice.id} failed to send.`);
+    }
+  };
 
   return (
     <>
